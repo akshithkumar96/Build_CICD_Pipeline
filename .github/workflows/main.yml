@@ -15,13 +15,13 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - D:\InspritVR\CODEBASE\Lap_Project\Build_CICD_Pipeline\New Unity Project
+          - D/InspritVR/CODEBASE/Lap_Project/Build_CICD_Pipeline/New Unity Project
         unityVersion:
-          - 2017.2.0
           - 2019.4.11f1
         targetPlatform:
           - StandaloneWindows # Build a Windows standalone.
-
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+    
     steps:
       - uses: actions/checkout@v2
         with:
@@ -33,6 +33,11 @@ jobs:
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
+      - uses: webbertakken/unity-builder@<version>
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v1
         with:
           name: Build
