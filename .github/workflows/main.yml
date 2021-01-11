@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - New Unity Project
+          - .
         unityVersion:
           - 2019.4.11f1
         targetPlatform:
