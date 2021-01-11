@@ -1,44 +1,18 @@
-name: Build project
 
+name: Build project
 on:
   pull_request: {}
   push: { branches: [main] }
-
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
-jobs:
-  buildForSomePlatforms:
-    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        projectPath:
-          - D/InspritVR/CODEBASE/Lap_Project/Build_CICD_Pipeline/New Unity Project
-        unityVersion:
-          - 2019.4.11f1
-        targetPlatform:
+- uses: webbertakken/unity-builder@<version>
+  env:
+    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  with:
+    projectPath: path/to/your/project
+    unityVersion: 2019.4.11f1
+    targetPlatform:
           - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-    
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-${{ matrix.projectPath }}-
-            Library-
-      - uses: webbertakken/unity-builder@<version>
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: ${{ matrix.targetPlatform }}
-      - uses: actions/upload-artifact@v1
-        with:
-          name: Build
-          path: build
+
+  uses: actions/upload-artifact@v1
+     with:
+        name: Build
+        path: build
