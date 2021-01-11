@@ -17,6 +17,7 @@ jobs:
         projectPath:
           - D:\InspritVR\CODEBASE\Lap_Project\Build_CICD_Pipeline\New Unity Project
         unityVersion:
+          - 2017.2.0
           - 2019.4.11f1
         targetPlatform:
           - StandaloneWindows # Build a Windows standalone.
