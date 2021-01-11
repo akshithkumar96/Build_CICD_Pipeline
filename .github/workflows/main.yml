@@ -15,11 +15,12 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - path/to/your/project
+          - D:\InspritVR\CODEBASE\Lap_Project\Build_CICD_Pipeline\New Unity Project
         unityVersion:
           - 2019.4.11f1
         targetPlatform:
           - StandaloneWindows # Build a Windows standalone.
+
     steps:
       - uses: actions/checkout@v2
         with:
