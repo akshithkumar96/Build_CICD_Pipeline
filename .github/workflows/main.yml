@@ -1,4 +1,4 @@
-﻿name: Unity Actions
+name: Unity Actions
 
 on:
   pull_request: {}
@@ -6,7 +6,7 @@ on:
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  UNITY_VERSION: 2019.4.11f1
+  UNITY_VERSION: 2020.1.7f1
   PROJECT_PATH: .
 
 jobs:
@@ -77,7 +77,9 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
+          - StandaloneOSX
           - StandaloneWindows64
+          - StandaloneLinux64
     steps:
       - uses: actions/checkout@v2
         with:
