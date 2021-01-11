@@ -1,4 +1,4 @@
-﻿name: Actions 😎
+﻿name: Actions
 
 on:
   pull_request: {}
@@ -49,7 +49,6 @@ jobs:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: '-myParameter myValue -myBoolean -ThirdParameter andItsValue'
       - uses: actions/upload-artifact@v1
         with:
           name: Build
