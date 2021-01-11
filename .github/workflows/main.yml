@@ -6,7 +6,6 @@
     unityVersion: 2019.4.11f1
     targetPlatform:
           - StandaloneWindows # Build a Windows standalone.
-
  - uses: actions/upload-artifact@v1
      with:
         name: Build
